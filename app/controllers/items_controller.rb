@@ -1,8 +1,24 @@
 class ItemsController < ApplicationController
-  def index
+
+  
+  def sniff
+  end
+  
+  def mojkvart
+    require 'nokogiri'
+    require 'open-uri'
+    
+    doc = Nokogiri::HTML(open('http://www.mojkvart.hr/ID'))
     
   end
 
+
+############################################
+  
+  def index
+    @items = Item.all
+  end
+  
   def show
     @item = Item.find(params[:id])
   end

@@ -1,0 +1,30 @@
+<% title "Sniffed" %>
+<% require 'nokogiri' %>
+<% require 'open-uri' %>
+
+<% doc = Nokogiri::HTML(open('http://www.mojkvart.hr/Zagreb/Cvjetno-naselje/Boutique-Butik-Obuca-Odjeca-Kozni-proizvodi-Second-hand-shop/CARPE-DIEM-MODA-ZAGREB')) %>
+<%= doc.css("a[class='kliTitle']").text %><br/><br/>
+Grad / Kvart: <br />
+<%= doc.css("div.kvartTitle").text %>
+<br/><br/>
+<% adresa = doc.css("tr")[0].css("td")[1] %><br /><br />
+Adresa: <%= adresa.xpath('//strong/text()[following-sibling::br]')[0] %><br/>
+Grad: <%= adresa.xpath('//strong/text()[preceding-sibling::br]')[0] %>
+<br/><br/>
+
+Radno vrijeme: <br />
+<%= doc.css("tr#ctl00_ctl00_ContentPlaceHolder1_subContentPlaceholder1_trRadnoVrijeme td strong").text %>
+<br/><br/>
+Tel: <br />
+<% doc.css("td.telHold22 span").each do |number| %>
+  <%= number.text %><br />
+<%end%>
+<br/><br/>
+Web: <br />
+<%= doc.css("tr#ctl00_ctl00_ContentPlaceHolder1_subContentPlaceholder1_trWeb a").text %>
+<br/><br/>
+Kategorija:<br/>
+<%= doc.css("div.crumbLnk a")[1].text %>
+<br/>
+<%= doc.css("div.crumbLnk a")[2].text %>
+<br/><br/>

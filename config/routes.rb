@@ -9,7 +9,7 @@ Spajder::Application.routes.draw do
   # Keep in mind you can assign values other than :controller and :action
 
   # Sample of named route:
-  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
+  match 'sniff' => 'items#sniff'
   # This route can be invoked with purchase_url(:id => product.id)
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
