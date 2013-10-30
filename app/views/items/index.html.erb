@@ -1,0 +1,7 @@
+<% title "Items" %>
+<% require 'nokogiri' %>
+<% require 'open-uri' %>
+
+<% doc = Nokogiri::HTML(open('http://www.mojkvart.hr/Zagreb/Spansko/Caffe-bar-kavana-pivnica-pub/pedalabus-hr')) %>
+<%= doc.css("a[class='kliTitle']").text %><br/>
+<%= doc.css("tr[id='ctl00_ctl00_ContentPlaceHolder1_subContentPlaceholder1_trAdresa']").text %><br/>
